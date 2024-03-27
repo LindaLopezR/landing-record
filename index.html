@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>¿Quieres tener acceso exclusivo al lanzamiento de RecordTV?</h1>
+    <h3>
+      <small>
+        Déjanos tu email y te enviaremos tu acceso para que
+        puedas disfrutar un día antes que todos de nuestro
+        lanzamiento
+      </small>
+    </h3>
+    <form id="formulario">
+      <label for="nombre">*Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required>
+
+      <label for="email">*Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="telefono">Teléfono:</label>
+      <input type="tel" id="telefono" name="telefono">
+
+      <button type="submit">Enviar</button>
+    </form>
+    <p id="mensaje"></p>
+    <footer>
+      <p>Políticas de privacidad | * Campos obligatorios</p>
+    </footer>
+  </div>
+  <script>
+    const formulario = document.getElementById('formulario');
+    const nombre = document.getElementById('nombre');
+    const email = document.getElementById('email');
+    const telefono = document.getElementById('telefono');
+    const mensaje = document.getElementById('mensaje');
+
+    formulario.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      // Validar nombre y email
+      if (!nombre.value || !email.value) {
+        mensaje.textContent = "Los campos nombre y email son obligatorios";
+        return;
+      }
+
+      // Enviar datos
+      const data = {
+        nombre: nombre.value,
+        email: email.value,
+        telefono: telefono.value || "",
+      };
+
+      // Aquí se enviaría la información a un servidor o API
+      console.log("Enviando datos:", data);
+
+      // Mostrar mensaje de éxito
+      mensaje.textContent = "¡Formulario enviado correctamente!";
+      document.getElementById('mensaje').classList.add('visible');
+
+      // Limpiar formulario
+      formulario.reset();
+    });
+
+  </script>
+</body>
+</html>
